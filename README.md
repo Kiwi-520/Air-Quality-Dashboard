@@ -1,4 +1,5 @@
 # 🌬️ Air Quality Monitor Dashboard
+-------------------------------------
 
 A real-time air pollution monitoring system that tracks air quality across multiple cities worldwide using the OpenWeatherMap API.
 
