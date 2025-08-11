@@ -15,7 +15,7 @@ def get_air_quality_data(city_name):
     '''Fetch air quality data from OpenWeatherMap'''
     try:
         # Get coordinates
-        geo_url = f'https://api.openweather.org/geo/1.0/direct?q={city_name}&limit=1&appid={API_KEY}'
+        geo_url = f'https://api.openweathermap.org/geo/1.0/direct?q={city_name}&limit=1&appid={API_KEY}'
         geo_response = requests.get(geo_url)
         geo_data = geo_response.json()
 
@@ -26,11 +26,11 @@ def get_air_quality_data(city_name):
         lon = geo_data[0]['lon']
 
         # Get air quality data
-        api_url = f'https://api.openweather.org/data/12.5/air_pollution?lat={lat}&lon={lon}&appid={API_KEY}'
+        api_url = f'https://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={API_KEY}'
         api_response = requests.get(api_url)
         api_data = api_response.json()
 
-        return{
+        return {
             'city': city_name,
             'aqi': api_data['list'][0]['main']['aqi'],
             'co': api_data['list'][0]['components']['co'],
@@ -38,9 +38,8 @@ def get_air_quality_data(city_name):
             'o3': api_data['list'][0]['components']['o3'],
             'pm2_5': api_data['list'][0]['components']['pm2_5'],
             'pm10': api_data['list'][0]['components']['pm10'],
-            'timestamp':datetime.now()
+            'timestamp': datetime.now()
         }
-    
     except Exception as e:
-        st.error(f'Error fetching data for {city_name}:{str(e)}')
+        st.error(f'Error fetching data for {city_name}: {str(e)}')
         return None
