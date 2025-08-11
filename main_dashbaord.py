@@ -29,7 +29,7 @@ def main():
     if auto_refresh:
         st.sidebar.write("⏱️ Auto-refreshing...")
         time.sleep(1)
-        st.experimental_rerun()
+        st.rerun()
     
     # Fetch data for selected cities
     if selected_cities:
