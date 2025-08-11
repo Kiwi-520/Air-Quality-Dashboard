@@ -1,3 +1,4 @@
+import plotly.graph_objects as go
 def get_aqi_info(aqi_level):
     """Return AQI category and health recommendations"""
     aqi_categories = {
