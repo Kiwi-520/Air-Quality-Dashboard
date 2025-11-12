@@ -30,16 +30,38 @@ def get_air_quality_data(city_name):
         api_response = requests.get(api_url)
         api_data = api_response.json()
 
+        components = api_data['list'][0]['components']
+        
         return {
             'city': city_name,
             'aqi': api_data['list'][0]['main']['aqi'],
-            'co': api_data['list'][0]['components']['co'],
-            'no2': api_data['list'][0]['components']['no2'],
-            'o3': api_data['list'][0]['components']['o3'],
-            'pm2_5': api_data['list'][0]['components']['pm2_5'],
-            'pm10': api_data['list'][0]['components']['pm10'],
+            'co': components.get('co', 0),
+            'no2': components.get('no2', 0),
+            'o3': components.get('o3', 0),
+            'pm2_5': components.get('pm2_5', 0),
+            'pm10': components.get('pm10', 0),
+            'so2': components.get('so2', 0),
             'timestamp': datetime.now()
         }
     except Exception as e:
         st.error(f'Error fetching data for {city_name}: {str(e)}')
         return None
+
+
+def get_pollutants_for_decision(city_name):
+    """
+    Fetch pollutant data formatted specifically for the decision engine.
+    Returns a clean dictionary of pollutant concentrations.
+    """
+    data = get_air_quality_data(city_name)
+    if not data:
+        return None
+    
+    return {
+        'pm2_5': data.get('pm2_5', 0),
+        'pm10': data.get('pm10', 0),
+        'o3': data.get('o3', 0),
+        'no2': data.get('no2', 0),
+        'co': data.get('co', 0),
+        'so2': data.get('so2', 0)
+    }
