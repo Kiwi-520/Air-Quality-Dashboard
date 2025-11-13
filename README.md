@@ -13,7 +13,7 @@ An **intelligent decision system** that transforms real-time air quality data in
 
 ## 🎬 Demo Video
 
-> **[📺 Watch Demo Video Here](#)** *(/workspaces/Air-Quality-Dashboard/air-quality-dashboard.mp4)*
+https://github.com/user-attachments/assets/331402b1-9da1-445d-8622-6702aa481f66
 
 *See the Decision Engine in action: from activity selection to risk assessment and prescriptive recommendations.*
 
@@ -22,7 +22,7 @@ An **intelligent decision system** that transforms real-time air quality data in
 ## 🚀 Quick Start
 
 ### Live Demo
-🌐 **[Try it Live](#)** *(https://air-quality-dashboard-kiwi-520.streamlit.app/)*
+🌐 **[Try it Live](https://air-quality-dashboard-kiwi-520.streamlit.app/)**
 
 ### Local Setup
 ```bash
